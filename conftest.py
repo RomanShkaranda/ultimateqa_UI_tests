@@ -1,6 +1,4 @@
-from selenium import webdriver
 import pytest
-
 from page_objects.main_page import MainPage
 from utilities.driver_factory import DriverFactory
 
@@ -17,5 +15,11 @@ def create_driver():
 @pytest.fixture
 def open_main_page(create_driver):
     return MainPage(create_driver)
+
+
+@pytest.fixture
+def open_academy_page(open_main_page):
+    return open_main_page.click_java_sdet_academy_list_item()
+
 
 
