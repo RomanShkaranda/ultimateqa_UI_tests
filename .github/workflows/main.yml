@@ -28,6 +28,9 @@ jobs:
         CHROME_DRIVER_VERSION=94.0.4606.41
         wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P $HOME
         unzip $HOME/chromedriver_linux64.zip -d $HOME
+        
+    - name: Start Google Chrome
+      run: google-chrome-stable &
       
     - name: Run tests
       run: pytest test.py
