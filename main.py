@@ -9,7 +9,6 @@ def test_is_main_page_opened(open_main_page):
 def test_click(open_main_page):
     main_page = open_main_page
     main_page.click_java_sdet_academy_list_item()
-    time.sleep(2)
 
 
 def test_academy_page(open_academy_page):
@@ -20,7 +19,6 @@ def test_academy_page(open_academy_page):
 def test_input_first_name(open_academy_page):
     academy_page = open_academy_page
     academy_page.input_all_data()
-    time.sleep(3)
 
 
 
