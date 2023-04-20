@@ -25,4 +25,4 @@ jobs:
       run: sudo apt-get install -y chromium-chromedriver  # Install Chromedriver
 
     - name: Run Pytest
-      run: python -m pytest --driver Chrome --driver-path /usr/lib/chromium-browser/chromedriver  # Run Pytest with Chrome driver
+      run: pytest test.py --driver Chrome --driver-path /usr/lib/chromium-browser/chromedriver  # Run Pytest with Chrome driver
