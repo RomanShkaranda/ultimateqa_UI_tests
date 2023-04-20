@@ -29,8 +29,10 @@ jobs:
         wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P $HOME
         unzip $HOME/chromedriver_linux64.zip -d $HOME
         
-    - name: Start Google Chrome
-      run: google-chrome-stable &
+    - name: Run Chrome in headless mode
+      run: |
+        google-chrome-stable --headless &
+        python -m pytest --driver Chrome --path $HOME/chromedriver
       
     - name: Run tests with Chrome in headless mode
       run: |
