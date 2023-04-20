@@ -32,7 +32,8 @@ jobs:
     - name: Start Google Chrome
       run: google-chrome-stable &
       
-    - name: Run tests
+    - name: Run tests with Chrome in headless mode
       run: |
+        google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
         python -m pytest --driver Chrome --driver-path $HOME
 
