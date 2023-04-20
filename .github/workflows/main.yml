@@ -35,5 +35,5 @@ jobs:
     - name: Run tests with Chrome in headless mode
       run: |
         google-chrome-stable --headless --disable-gpu --disable-gpu-sandbox --remote-debugging-port=9222 &
-        python -m pytest --driver Chrome --driver-path $HOME/chromedriver
+        python -m pytest --driver Chrome --path $HOME/chromedriver
 
