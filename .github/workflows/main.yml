@@ -33,5 +33,6 @@ jobs:
       run: google-chrome-stable &
       
     - name: Run tests
-      run: pytest test.py
+      run: |
+        python -m pytest --driver Chrome --driver-path $HOME
 
