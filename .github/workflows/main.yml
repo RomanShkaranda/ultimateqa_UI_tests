@@ -32,7 +32,7 @@ jobs:
     - name: Run Chrome in headless mode
       run: |
         google-chrome-stable --headless &
-        python -m pytest --driver Chrome --path $HOME/chromedriver
+        python -m pytest --driver-name Chrome --driver-path $HOME/chromedriver
       
     - name: Run tests with Chrome in headless mode
       run: |
