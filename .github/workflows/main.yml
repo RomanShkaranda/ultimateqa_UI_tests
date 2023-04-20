@@ -1,41 +1,28 @@
-name: Python Tests
+name: Run Pytest Tests
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]  # Trigger the workflow on push and pull request events
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-      
+      uses: actions/checkout@v2  # Checkout the code from the repository
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
-        
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-        pip install selenium
-        
-    - name: Download Chrome driver
-      run: |
-        CHROME_DRIVER_VERSION=94.0.4606.41
-        wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P $HOME
-        unzip $HOME/chromedriver_linux64.zip -d $HOME
-        
-    - name: Run Chrome in headless mode
-      run: |
-        google-chrome-stable --headless &
-        python -m pytest --driver-name Chrome --driver-path $HOME/chromedriver
-      
-    - name: Run tests with Chrome in headless mode
-      run: |
-        google-chrome-stable --headless --disable-gpu --disable-gpu-sandbox --remote-debugging-port=9222 &
-        python -m pytest --driver Chrome --path $HOME/chromedriver
+        python-version: 3.9  # Specify the Python version to be used
 
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # Install the dependencies listed in requirements.txt file
+
+    - name: Install Chrome
+      run: sudo apt-get update && sudo apt-get install -y google-chrome-stable  # Install Chrome browser
+
+    - name: Install Chromedriver
+      run: sudo apt-get install -y chromium-chromedriver  # Install Chromedriver
+
+    - name: Run Pytest
+      run: python -m pytest --driver Chrome --driver-path /usr/lib/chromium-browser/chromedriver  # Run Pytest with Chrome driver
