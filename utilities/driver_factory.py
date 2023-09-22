@@ -14,11 +14,11 @@ class DriverFactory:
     @staticmethod
     def create_driver(driver_id):
         if int(driver_id) == DriverFactory.CHROME:
-            chrome_options = Options()
+            options = Options()
             # add if you want headless and no sandbox
             # chrome_options.add_argument('--headless')
             # chrome_options.add_argument('--no-sandbox')
-            driver = Chrome(service=Service(ChromeDriverManager().install()), chrome_options=chrome_options)
+            driver = Chrome(service=Service(ChromeDriverManager().install()), options=options)
         elif int(driver_id) == DriverFactory.FIREFOX:
             driver = Firefox(service=Service(GeckoDriverManager().install()))
         elif int(driver_id) == DriverFactory.EDGE:
