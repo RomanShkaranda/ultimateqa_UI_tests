@@ -9,8 +9,7 @@ class MainPage(BasePage):
 
     __search_field = (By.XPATH, "//input[@type='search']")
     __logo_button = (By.XPATH, "//*[@class='wp-image-216051 entered lazyloaded']")
-    __java_SDET_academy_list_item = (By.XPATH, "//li[@class='et_pb_menu_page_id-217441 menu-item menu-item-type-custom "
-                                               "menu-item-object-custom menu-item-217441']")
+    __java_SDET_academy_list_item = (By.XPATH, "//li[@id='menu-item-217931']")
 
     def is_main_page_opened(self):
         return self._is_visible(self.__search_field)
