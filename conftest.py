@@ -6,8 +6,8 @@ from utilities.driver_factory import DriverFactory
 @pytest.fixture
 def create_driver():
     chrome_driver = DriverFactory.create_driver(1)
-    chrome_driver.maximize_window()
     chrome_driver.get("https://ultimateqa.com/")
+    chrome_driver.maximize_window()
     yield chrome_driver
     chrome_driver.quit()
 
